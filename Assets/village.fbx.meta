@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: 16193b067b92c43f4adef8121e47c79b
+timeCreated: 1510512619
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Cube.100
+    100002: Cube.107
+    100004: Cube.108
+    100006: Cube.109
+    100008: Cylinder.024
+    100010: Cylinder.025
+    100012: //RootNode
+    400000: Cube.100
+    400002: Cube.107
+    400004: Cube.108
+    400006: Cube.109
+    400008: Cylinder.024
+    400010: Cylinder.025
+    400012: //RootNode
+    2300000: Cube.100
+    2300002: Cube.107
+    2300004: Cube.108
+    2300006: Cube.109
+    2300008: Cylinder.024
+    2300010: Cylinder.025
+    3300000: Cube.100
+    3300002: Cube.107
+    3300004: Cube.108
+    3300006: Cube.109
+    3300008: Cylinder.024
+    3300010: Cylinder.025
+    4300000: Cube.100
+    4300002: Cube.107
+    4300004: Cube.108
+    4300006: Cube.109
+    4300008: Cylinder.024
+    4300010: Cylinder.025
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House
+    second: {fileID: 2100000, guid: 30cf44ba67f054cc1a431d7e06eac08b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House.001
+    second: {fileID: 2100000, guid: 52e703e8777344da9b95b8d9d0f82855, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House.002
+    second: {fileID: 2100000, guid: 227ffeac375194d788cb6e71d6c6129e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House.003
+    second: {fileID: 2100000, guid: 2fe957f0f68e34a4c8be43bf8ed5fee0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House.004
+    second: {fileID: 2100000, guid: d2060b035e9074fbd89e0944df781637, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House.005
+    second: {fileID: 2100000, guid: 3b97fddf7921442e89cbd4d57dbc8516, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House.006
+    second: {fileID: 2100000, guid: 1304e8afb5db74db08c0d8a29b67b48f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House.007
+    second: {fileID: 2100000, guid: f1b448535ac2a49169c5008210d14920, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.044
+    second: {fileID: 2100000, guid: d08d64c8fc61543f19bff959cbed29db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.045
+    second: {fileID: 2100000, guid: ff4fd671091ae49c88226a85f6ba3a2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roccks.001
+    second: {fileID: 2100000, guid: b4db873bafe1e418783a88f1da9c1568, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
