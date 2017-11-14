@@ -11,12 +11,20 @@ public class TileGenerator : MonoBehaviour {
 	int map_width = 100;
 	int map_height = 100;
 
-	int[][] map = new int[100][];
+	int[][] map = new int[10][];
 
 	int tile_width = 250;
 
+	float[][] weights = new float[3][];
+
 	// Use this for initialization
 	void Start () {
+		for (int i = 0; i < 3; i++) {
+			weights [i] = new float[10];
+			for (int j = 0; j < 10; j++) {
+				weights [i] [j] = (UnityEngine.Random.value - 0.5f); //* (float) Math.Sqrt(j);
+			}
+		}
 //		TilePosition p1 = new TilePosition (0, 0, 0);
 //		TilePosition p2 = new TilePosition (0, 1, -1);
 //		TilePosition p3 = new TilePosition (1, 0, -1);
@@ -28,14 +36,42 @@ public class TileGenerator : MonoBehaviour {
 //		GameObject o3 = Instantiate (water);
 //		o3.transform.position = new Vector3 (p3.cartesian ().x, 0, p3.cartesian ().y);
 //
-		for (int i = 0; i < 50; i++) {
-			for (int j = 0; j < 50; j++) {
-				TilePosition p = new TilePosition (i, j);
+		for (int i = 0; i < 20; i++) {
+			for (int j = 0; j < 20; j++) {
+				//(+, -, +-)
+				TilePosition p = new TilePosition (i, -j, j - i);
 				Vector2 cartesian = p.cartesian ();
-				GameObject o = true || isLand(i, j, -i - j) ? Instantiate (ground) : Instantiate (water);
+				GameObject o = isLand(i, -j, j - i) ? Instantiate (ground) : Instantiate (water);
 				o.transform.position = new Vector3 (cartesian.x, 0, cartesian.y);
+				//(+-, +, -)
+				TilePosition p2 = new TilePosition (j - i, i, -j);
+				Vector2 cartesian2 = p2.cartesian ();
+				GameObject o2 = isLand(j - i, i, -j) ? Instantiate (ground) : Instantiate (water);
+				o2.transform.position = new Vector3 (cartesian2.x, 0, cartesian2.y);
+				//(-, +- +)
+				TilePosition p3 = new TilePosition (-j, j - i, i);
+				Vector2 cartesian3 = p3.cartesian ();
+				GameObject o3 = isLand(-j, j - i, i) ? Instantiate (ground) : Instantiate (water);
+				o3.transform.position = new Vector3 (cartesian3.x, 0, cartesian3.y);
 			}
 		}
+//		int size = 20;
+//		for (int i = 0; i < size; i++) {
+//			for (int j = 0; j < size - i; j++) {
+//				TilePosition[] p = new TilePosition[6];
+//				p [0] = new TilePosition (i, j, -i - j);
+//				p [1] = new TilePosition (i, -i - j, j);
+//				p [2] = new TilePosition (-i - j, i, j);
+//				p [3] = new TilePosition (-i, -j, i + j);
+//				p [4] = new TilePosition (-i, i + j, -j);
+//				p [5] = new TilePosition (i + j, -i, -j);
+//				for (int k = 0; k < 6; k++) {
+//					Vector2 cartesian = p [k].cartesian ();
+//					GameObject o = isLand (p [k]) ? Instantiate (ground) : Instantiate (water);
+//					o.transform.position = new Vector3 (cartesian.x, 0, cartesian.y);
+//				}
+//			}
+//		}
 //
 //		print(water.transform.lossyScale.x);
 //
@@ -68,8 +104,20 @@ public class TileGenerator : MonoBehaviour {
 //
 	}
 
+	bool isLand(TilePosition p){
+		return isLand ((int) p.GetX (), (int) p.GetY (), (int) p.GetZ ());
+	}
+
 	bool isLand(int x, int y, int z) {
-		return Math.Sin (x / 3) + Math.Sin (y / 5) + Math.Sin (z / 7) > 0.4;
+		float sum = 0.0f;
+		for (int i = 0; i < 10; i++) {
+			sum += weights [0] [i] * (float) Math.Sin ((float) x / (i + 1));
+			sum += weights [1] [i] * (float) Math.Sin ((float) y / (i + 1));
+			sum += weights [2] [i] * (float) Math.Sin ((float) z / (i + 1));
+		}
+		print (sum);
+		return sum > 1.0;
+		//return Math.Sin ((float) x / 3) + Math.Sin ((float) y / 5) + Math.Sin ((float) z / 7) > 0.4;
 	}
 	
 	// Update is called once per frame
