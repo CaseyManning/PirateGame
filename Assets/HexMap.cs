@@ -54,6 +54,17 @@ public class HexMap<T> : IEnumerable
 		}
 	}
 
+	public T this[TilePosition p] {
+		get {
+			TilePosition rounded = p.Round ();
+			return this [rounded.GetX (), rounded.GetY (), rounded.GetZ ()];
+		}
+		set {
+			TilePosition rounded = p.Round ();
+			this [rounded.GetX (), rounded.GetY (), rounded.GetZ ()] = value;
+		}
+	}
+
 	public IEnumerator GetEnumerator() {
 		yield return origin;
 		for (int i = 0; i < size; i++) {
