@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UnityEngine;
 
 public class HexMap<T> : IEnumerable
 {
@@ -18,7 +19,9 @@ public class HexMap<T> : IEnumerable
 
 	public T this[int x, int y, int z] {
 		get {
-			if (x > 0 && y < 0) {
+			if (x == 0 && y == 0 && z == 0) {
+				return origin;
+			} else if (x > 0 && y < 0) {
 				return thirds [0, x - 1, -y - 1];
 			} else if (y > 0 && z < 0) {
 				return thirds [1, y - 1, -z - 1];
@@ -31,12 +34,14 @@ public class HexMap<T> : IEnumerable
 			} else if (z == 0) {
 				return axes [2, y - 1];
 			} else {
-				return origin;
+				return default(T);
 			}
 		}
 
 		set {
-			if (x > 0 && y < 0) {
+			if (x == 0 && y == 0 && z == 0) {
+				origin = value;
+			} else if (x > 0 && y < 0) {
 				thirds [0, x - 1, -y - 1] = value;
 			} else if (y > 0 && z < 0) {
 				thirds [1, y - 1, -z - 1] = value;
@@ -48,8 +53,6 @@ public class HexMap<T> : IEnumerable
 				axes [1, x - 1] = value;
 			} else if (z == 0) {
 				axes [2, y - 1] = value;
-			} else {
-				origin = value;
 			}
 		}
 	}
@@ -73,8 +76,7 @@ public class HexMap<T> : IEnumerable
 				for (int k = 0; k < i; k++) {
 					yield return thirds [j, k, i];
 				}
-				yield return thirds [j, i, i];
-				for (int k = 0; k < i; k++) {
+				for (int k = i; k >= 0; k--) {
 					yield return thirds [j, i, k];
 				}
 			}
