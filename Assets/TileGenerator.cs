@@ -8,6 +8,7 @@ public class TileGenerator : MonoBehaviour {
 	public GameObject water;
 	public GameObject ground;
 	public GameObject tree;
+	public GameObject village;
 
 	HexMap<GameObject> map;
 
@@ -111,7 +112,11 @@ public class TileGenerator : MonoBehaviour {
 		if (sum > 1.8 || sum < -1.8) {
 			return Instantiate (tree);
 		} else if (sum > 1.0 || sum < -1.0) {
-			return Instantiate(ground);
+			if ((sum - sum % 0.01) % 0.1 == 0.06) {
+				return Instantiate (village);
+			} else {
+				return Instantiate (ground);
+			}
 		} else {
 			return Instantiate(water);
 		}
