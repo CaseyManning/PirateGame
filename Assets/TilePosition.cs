@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TilePosition
 {
-	public const float SIZE = 3.168f; //distance from center to vertex
+	public const float SIZE = 1.0f;//3.168f; //distance from center to vertex
 	float SQRT3 = (float) Math.Sqrt(3);
 
 	private float x, y;
