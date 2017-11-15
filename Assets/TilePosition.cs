@@ -8,18 +8,9 @@ public class TilePosition
 
 	private float x, y;
 
-	public TilePosition(float x, float y)
-	{
-		this.x = x;
-		this.y = y;
-	}
-
-	public TilePosition(float x, float y, float z){
-		this.x = x;
-		this.y = y;
-		if (x + y + z != 0) {
-			throw new ArgumentException ("x + y + z != 0");
-		}
+	public TilePosition(float x = float.NaN, float y = float.NaN, float z = float.NaN){
+		this.x = float.IsNaN (x) ? -(y + z) : x;
+		this.y = float.IsNaN (y) ? -(x + z) : y;
 	}
 
 	public float GetX(){
