@@ -108,7 +108,7 @@ public class TileGenerator : MonoBehaviour {
 			sum += weights [1, i] * (float) Math.Sin ((float) (p.GetY() - offsets[1, i]) / (i + 1));
 			sum += weights [2, i] * (float) Math.Sin ((float) (p.GetZ() - offsets[2, i]) / (i + 1));
 		}
-		if (sum > 1.6 || sum < -1.6) {
+		if (sum > 1.8 || sum < -1.8) {
 			return Instantiate (tree);
 		} else if (sum > 1.0 || sum < -1.0) {
 			return Instantiate(ground);
