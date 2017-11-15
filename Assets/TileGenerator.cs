@@ -7,6 +7,7 @@ public class TileGenerator : MonoBehaviour {
 
 	public GameObject water;
 	public GameObject ground;
+	public GameObject tree;
 
 	HexMap<GameObject> map;
 
@@ -37,17 +38,17 @@ public class TileGenerator : MonoBehaviour {
 				//(+, -, +-)
 				TilePosition p = new TilePosition (x: i, y: -j);
 				Vector2 cartesian = p.cartesian ();
-				GameObject o = isLand(i, -j, j - i) ? Instantiate (ground) : Instantiate (water);
+				GameObject o = byHeight (p);//isLand(i, -j, j - i) ? Instantiate (ground) : Instantiate (water);
 				o.transform.position = new Vector3 (cartesian.x, 0, cartesian.y);
 				//(+-, +, -)
 				TilePosition p2 = new TilePosition (y: i, z: -j);
 				Vector2 cartesian2 = p2.cartesian ();
-				GameObject o2 = isLand(j - i, i, -j) ? Instantiate (ground) : Instantiate (water);
+				GameObject o2 = byHeight (p2);//isLand(j - i, i, -j) ? Instantiate (ground) : Instantiate (water);
 				o2.transform.position = new Vector3 (cartesian2.x, 0, cartesian2.y);
 				//(-, +- +)
 				TilePosition p3 = new TilePosition (x: -j, z: i);
 				Vector2 cartesian3 = p3.cartesian ();
-				GameObject o3 = isLand(-j, j - i, i) ? Instantiate (ground) : Instantiate (water);
+				GameObject o3 = byHeight (p3);//isLand(-j, j - i, i) ? Instantiate (ground) : Instantiate (water);
 				o3.transform.position = new Vector3 (cartesian3.x, 0, cartesian3.y);
 			}
 		}
@@ -98,6 +99,22 @@ public class TileGenerator : MonoBehaviour {
 //			}
 //		}
 //
+	}
+
+	public GameObject byHeight(TilePosition p) {
+		float sum = 0.0f;
+		for (int i = 0; i < 10; i++) {
+			sum += weights [0, i] * (float) Math.Sin ((float) (p.GetX() - offsets[0, i]) / (i + 1));
+			sum += weights [1, i] * (float) Math.Sin ((float) (p.GetY() - offsets[1, i]) / (i + 1));
+			sum += weights [2, i] * (float) Math.Sin ((float) (p.GetZ() - offsets[2, i]) / (i + 1));
+		}
+		if (sum > 1.6) {
+			return Instantiate (tree);
+		} else if (sum > 1.0) {
+			return Instantiate(ground);
+		} else {
+			return Instantiate(water);
+		}
 	}
 
 	bool isLand(TilePosition p){
