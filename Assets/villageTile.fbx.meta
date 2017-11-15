@@ -1,98 +1,83 @@
 fileFormatVersion: 2
-guid: 16193b067b92c43f4adef8121e47c79b
-timeCreated: 1510512619
+guid: 93a4f7a637acf4cc89a9ed541eb411d8
+timeCreated: 1510727424
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Cube.100
-    100002: Cube.107
-    100004: Cube.108
-    100006: Cube.109
-    100008: Cylinder.024
-    100010: Cylinder.025
-    100012: //RootNode
+    100002: Cube.104
+    100004: Cube.105
+    100006: Cube.106
+    100008: Cube.107
+    100010: Cube.108
+    100012: Cube.109
+    100014: Cylinder.025
+    100016: Plane
+    100018: Plane.001
+    100020: //RootNode
     400000: Cube.100
-    400002: Cube.107
-    400004: Cube.108
-    400006: Cube.109
-    400008: Cylinder.024
-    400010: Cylinder.025
-    400012: //RootNode
+    400002: Cube.104
+    400004: Cube.105
+    400006: Cube.106
+    400008: Cube.107
+    400010: Cube.108
+    400012: Cube.109
+    400014: Cylinder.025
+    400016: Plane
+    400018: Plane.001
+    400020: //RootNode
     2300000: Cube.100
-    2300002: Cube.107
-    2300004: Cube.108
-    2300006: Cube.109
-    2300008: Cylinder.024
-    2300010: Cylinder.025
+    2300002: Cube.104
+    2300004: Cube.105
+    2300006: Cube.106
+    2300008: Cube.107
+    2300010: Cube.108
+    2300012: Cube.109
+    2300014: Cylinder.025
+    2300016: Plane
+    2300018: Plane.001
     3300000: Cube.100
-    3300002: Cube.107
-    3300004: Cube.108
-    3300006: Cube.109
-    3300008: Cylinder.024
-    3300010: Cylinder.025
-    4300000: Cube.100
-    4300002: Cube.107
-    4300004: Cube.108
-    4300006: Cube.109
-    4300008: Cylinder.024
-    4300010: Cylinder.025
+    3300002: Cube.104
+    3300004: Cube.105
+    3300006: Cube.106
+    3300008: Cube.107
+    3300010: Cube.108
+    3300012: Cube.109
+    3300014: Cylinder.025
+    3300016: Plane
+    3300018: Plane.001
+    4300000: Plane.001
+    4300002: Cube.100
+    4300004: Cube.104
+    4300006: Cube.105
+    4300008: Cube.106
+    4300010: Cube.107
+    4300012: Cube.108
+    4300014: Cube.109
+    4300016: Cylinder.025
+    4300018: Plane
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: House
-    second: {fileID: 2100000, guid: 30cf44ba67f054cc1a431d7e06eac08b, type: 2}
+      name: Ground
+    second: {fileID: 2100000, guid: 0cff41cf9acbc4a33a3f2f0f49d4b4ac, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: House.001
-    second: {fileID: 2100000, guid: 52e703e8777344da9b95b8d9d0f82855, type: 2}
+      name: HouseDark
+    second: {fileID: 2100000, guid: 1997ff0c2974c49d5ba7f4c1a8791856, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: House.002
-    second: {fileID: 2100000, guid: 227ffeac375194d788cb6e71d6c6129e, type: 2}
+      name: HouseLight
+    second: {fileID: 2100000, guid: 85cecb25198724d8eb2202c065d4cb96, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: House.003
-    second: {fileID: 2100000, guid: 2fe957f0f68e34a4c8be43bf8ed5fee0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: House.004
-    second: {fileID: 2100000, guid: d2060b035e9074fbd89e0944df781637, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: House.005
-    second: {fileID: 2100000, guid: 3b97fddf7921442e89cbd4d57dbc8516, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: House.006
-    second: {fileID: 2100000, guid: 1304e8afb5db74db08c0d8a29b67b48f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: House.007
-    second: {fileID: 2100000, guid: f1b448535ac2a49169c5008210d14920, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.044
-    second: {fileID: 2100000, guid: d08d64c8fc61543f19bff959cbed29db, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.045
-    second: {fileID: 2100000, guid: ff4fd671091ae49c88226a85f6ba3a2a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Roccks.001
-    second: {fileID: 2100000, guid: b4db873bafe1e418783a88f1da9c1568, type: 2}
+      name: Well_Stone
+    second: {fileID: 2100000, guid: f5c56f68ecd454ea7894d895d7a9b2a1, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
