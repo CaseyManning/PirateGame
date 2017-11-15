@@ -34,7 +34,7 @@ public class HexMap<T> : IEnumerable
 			} else if (z == 0) {
 				return axes [2, y - 1];
 			} else {
-				return default(T);
+				throw new ArgumentException ("Illegal position");
 			}
 		}
 
@@ -53,6 +53,8 @@ public class HexMap<T> : IEnumerable
 				axes [1, x - 1] = value;
 			} else if (z == 0) {
 				axes [2, y - 1] = value;
+			} else {
+				throw new ArgumentException ("Illegal position");
 			}
 		}
 	}
