@@ -12,9 +12,12 @@ public class HexMap<T> : IEnumerable
 	public HexMap (int size)
 	{
 		this.size = size;
-//		origin = null;
 		axes = new T[3, size];
 		thirds = new T[3, size, size];
+	}
+
+	public HexMap(int size, Func<int, int, int, T> gen) : this(size) {
+		Gen (gen);
 	}
 
 	public T this[int x, int y, int z] {
@@ -87,6 +90,33 @@ public class HexMap<T> : IEnumerable
 
 	public int Area(){
 		return 1 + 3 * size * (size + 1);
+	}
+
+	public void Gen(Func<int, int, int, T> gen){
+		origin = gen.Invoke (0, 0, 0);
+		for (int i = 0; i < size; i++) {
+			axes [0, i] = gen.Invoke (0, -i - 1, i + 1);
+			for (int k = 0; k < i; k++) {
+				thirds [0, k, i] = gen.Invoke (k + 1, -i - 1, i - k);
+			}
+			for (int k = i; k >= 0; k--) {
+				thirds [0, i, k] = gen.Invoke (i + 1, -k - 1, k - i);
+			}
+			axes [1, i] = gen.Invoke (i + 1, 0, -i - 1);
+			for (int k = 0; k < i; k++) {
+				thirds [1, k, i] = gen.Invoke (i - k, k + 1, -i - 1);
+			}
+			for (int k = i; k >= 0; k--) {
+				thirds [1, i, k] = gen.Invoke (k - i, i + 1, -k - 1);
+			}
+			axes [2, i] = gen.Invoke (-i - 1, i + 1, 0);
+			for (int k = 0; k < i; k++) {
+				thirds [2, k, i] = gen.Invoke (-i - 1, i - k, k + 1);
+			}
+			for (int k = i; k >= 0; k--) {
+				thirds [2, i, k] = gen.Invoke (-k - 1, k - i, i + 1);
+			}
+		}
 	}
 }
 

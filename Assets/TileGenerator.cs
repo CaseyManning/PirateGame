@@ -23,6 +23,13 @@ public class TileGenerator : MonoBehaviour {
 				offsets [i, j] = (UnityEngine.Random.value * j);
 			}
 		}
+		map = new HexMap<GameObject> (20, (x, y, z) => {
+			TilePosition p = new TilePosition(x, y, z);
+			Vector2 cartesian = p.cartesian();
+			GameObject o = byHeight(p);
+			o.transform.position = new Vector3(cartesian.x, 0, cartesian.y);
+			return o;
+		});
 //		TilePosition p1 = new TilePosition (0, 0, 0);
 //		TilePosition p2 = new TilePosition (0, 1, -1);
 //		TilePosition p3 = new TilePosition (1, 0, -1);
@@ -34,25 +41,35 @@ public class TileGenerator : MonoBehaviour {
 //		GameObject o3 = Instantiate (water);
 //		o3.transform.position = new Vector3 (p3.cartesian ().x, 0, p3.cartesian ().y);
 //
-		for (int i = 0; i < 20; i++) {
-			for (int j = 0; j < 20; j++) {
-				//(+, -, +-)
-				TilePosition p = new TilePosition (x: i, y: -j);
-				Vector2 cartesian = p.cartesian ();
-				GameObject o = byHeight (p);//isLand(i, -j, j - i) ? Instantiate (ground) : Instantiate (water);
-				o.transform.position = new Vector3 (cartesian.x, 0, cartesian.y);
-				//(+-, +, -)
-				TilePosition p2 = new TilePosition (y: i, z: -j);
-				Vector2 cartesian2 = p2.cartesian ();
-				GameObject o2 = byHeight (p2);//isLand(j - i, i, -j) ? Instantiate (ground) : Instantiate (water);
-				o2.transform.position = new Vector3 (cartesian2.x, 0, cartesian2.y);
-				//(-, +- +)
-				TilePosition p3 = new TilePosition (x: -j, z: i);
-				Vector2 cartesian3 = p3.cartesian ();
-				GameObject o3 = byHeight (p3);//isLand(-j, j - i, i) ? Instantiate (ground) : Instantiate (water);
-				o3.transform.position = new Vector3 (cartesian3.x, 0, cartesian3.y);
-			}
-		}
+
+//		for (int i = 0; i < 20; i++) {
+//			for (int j = 0; j < 20; j++) {
+//				//(+, -, +-)
+//				TilePosition p = new TilePosition (x: i, y: -j);
+//				Vector2 cartesian = p.cartesian ();
+//				GameObject o = byHeight (p);//isLand(i, -j, j - i) ? Instantiate (ground) : Instantiate (water);
+//				o.transform.position = new Vector3 (cartesian.x, 0, cartesian.y);
+//				map [p] = o;
+//				//(+-, +, -)
+//				TilePosition p2 = new TilePosition (y: i, z: -j);
+//				Vector2 cartesian2 = p2.cartesian ();
+//				GameObject o2 = byHeight (p2);//isLand(j - i, i, -j) ? Instantiate (ground) : Instantiate (water);
+//				o2.transform.position = new Vector3 (cartesian2.x, 0, cartesian2.y);
+//				map [p2] = o2;
+//				//(-, +- +)
+//				TilePosition p3 = new TilePosition (x: -j, z: i);
+//				Vector2 cartesian3 = p3.cartesian ();
+//				GameObject o3 = byHeight (p3);//isLand(-j, j - i, i) ? Instantiate (ground) : Instantiate (water);
+//				o3.transform.position = new Vector3 (cartesian3.x, 0, cartesian3.y);
+//				map [p3] = o3;
+//			}
+//		}
+
+//		float time = 1.0f;
+//		foreach(GameObject obj in map){
+//			Destroy(obj, time);
+//			time += 1.0f;
+//		}
 //		int size = 20;
 //		for (int i = 0; i < size; i++) {
 //			for (int j = 0; j < size - i; j++) {
