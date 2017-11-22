@@ -12,15 +12,15 @@ public class TileGenerator : MonoBehaviour {
 
 	HexMap<GameObject> map;
 
-	float[,] weights = new float[3, 10];
-	float[,] offsets = new float[3, 10];
+	float[,] weights = new float[3, 20];
+	float[,] offsets = new float[3, 20];
 
 	// Use this for initialization
 	void Start () {
 		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 10; j++) {
-				weights [i, j] = (UnityEngine.Random.value - 0.5f) * (float) Math.Sqrt(j);
-				offsets [i, j] = (UnityEngine.Random.value * j);
+			for (int j = 0; j < 20; j++) {
+				weights [i, j] = (UnityEngine.Random.value - 0.5f) * (float) Math.Sqrt(j / 2.0);
+				offsets [i, j] = (UnityEngine.Random.value * j / 2.0f);
 			}
 		}
 		map = new HexMap<GameObject> (20, (x, y, z) => {
@@ -121,14 +121,14 @@ public class TileGenerator : MonoBehaviour {
 
 	public GameObject byHeight(TilePosition p) {
 		float sum = 0.0f;
-		for (int i = 0; i < 10; i++) {
-			sum += weights [0, i] * (float) Math.Sin ((float) (p.GetX() - offsets[0, i]) / (i + 1));
-			sum += weights [1, i] * (float) Math.Sin ((float) (p.GetY() - offsets[1, i]) / (i + 1));
-			sum += weights [2, i] * (float) Math.Sin ((float) (p.GetZ() - offsets[2, i]) / (i + 1));
+		for (int i = 0; i < 20; i++) {
+			sum += weights [0, i] * (float) Math.Sin ((float) (p.GetX() - offsets[0, i]) * 2 / (i + 1));
+			sum += weights [1, i] * (float) Math.Sin ((float) (p.GetY() - offsets[1, i]) * 2 / (i + 1));
+			sum += weights [2, i] * (float) Math.Sin ((float) (p.GetZ() - offsets[2, i]) * 2 / (i + 1));
 		}
-		if (sum > 2.8 || sum < -2.8) {
+		if (sum > 3.4 || sum < -3.4) {
 			return Instantiate (tree);
-		} else if (sum > 1.4 || sum < -1.4) {
+		} else if (sum > 1.7 || sum < -1.7) {
 			if ((sum - sum % 0.01) % 0.1 == 0.06) {
 				return Instantiate (village);
 			} else {
@@ -145,10 +145,10 @@ public class TileGenerator : MonoBehaviour {
 
 	bool isLand(int x, int y, int z) {
 		float sum = 0.0f;
-		for (int i = 0; i < 10; i++) {
-			sum += weights [0, i] * (float) Math.Sin ((float) (x - offsets[0, i]) / (i + 1));
-			sum += weights [1, i] * (float) Math.Sin ((float) (y - offsets[1, i]) / (i + 1));
-			sum += weights [2, i] * (float) Math.Sin ((float) (z - offsets[2, i]) / (i + 1));
+		for (int i = 0; i < 20; i++) {
+			sum += weights [0, i] * (float) Math.Sin ((float) (x - offsets[0, i]) * 2 / (i + 1));
+			sum += weights [1, i] * (float) Math.Sin ((float) (y - offsets[1, i]) * 2 / (i + 1));
+			sum += weights [2, i] * (float) Math.Sin ((float) (z - offsets[2, i]) * 2 / (i + 1));
 		}
 		print (sum);
 		return sum > 1.0;
