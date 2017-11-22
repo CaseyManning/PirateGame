@@ -19,7 +19,7 @@ public class TileGenerator : MonoBehaviour {
 	void Start () {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 10; j++) {
-				weights [i, j] = (UnityEngine.Random.value - 0.5f); //* (float) Math.Sqrt(j);
+				weights [i, j] = (UnityEngine.Random.value - 0.5f) * (float) Math.Sqrt(j);
 				offsets [i, j] = (UnityEngine.Random.value * j);
 			}
 		}
@@ -126,9 +126,9 @@ public class TileGenerator : MonoBehaviour {
 			sum += weights [1, i] * (float) Math.Sin ((float) (p.GetY() - offsets[1, i]) / (i + 1));
 			sum += weights [2, i] * (float) Math.Sin ((float) (p.GetZ() - offsets[2, i]) / (i + 1));
 		}
-		if (sum > 1.8 || sum < -1.8) {
+		if (sum > 2.8 || sum < -2.8) {
 			return Instantiate (tree);
-		} else if (sum > 1.0 || sum < -1.0) {
+		} else if (sum > 1.4 || sum < -1.4) {
 			if ((sum - sum % 0.01) % 0.1 == 0.06) {
 				return Instantiate (village);
 			} else {
